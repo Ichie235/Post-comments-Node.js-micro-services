@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CreateComments from "./CreateComments";
+import ListComments from "./ListComments";
 
 const ListPost = () => {
   const [posts, setPosts] = useState({});
@@ -22,6 +24,8 @@ const ListPost = () => {
         <div className="card-body">
           <h3>{post.title}</h3>
           <p>{post.content}</p>
+          <CreateComments postId={post.id} />
+          <ListComments postId={post.id} />
         </div>
       </div>
     );
