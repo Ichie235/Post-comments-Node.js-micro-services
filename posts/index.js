@@ -22,7 +22,6 @@ app.post('/posts', (req, res) => {
     title,
     content
   };
-console.log(posts)
   res.status(201).send(posts[id]);
 });
 
