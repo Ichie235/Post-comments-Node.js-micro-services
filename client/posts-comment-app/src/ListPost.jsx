@@ -5,8 +5,9 @@ import ListComments from "./ListComments";
 
 const ListPost = () => {
   const [posts, setPosts] = useState({});
+
   const fetchPosts = async () => {
-    const res = await axios.get("http://localhost:5000/posts");
+    const res = await axios.get("http://localhost:8000/posts");
 
     setPosts(res.data);
   };
@@ -14,6 +15,7 @@ const ListPost = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
+console.log(posts)
   const renderedPosts = Object.values(posts).map((post) => {
     return (
       <div
@@ -24,8 +26,8 @@ const ListPost = () => {
         <div className="card-body">
           <h3>{post.title}</h3>
           <p>{post.content}</p>
+          <ListComments comments={post.comments} />
           <CreateComments postId={post.id} />
-          <ListComments postId={post.id} />
         </div>
       </div>
     );

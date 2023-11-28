@@ -1,21 +1,10 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"; 
 
-const ListComments = ({ postId }) => {
-  const [comments, setComments] = useState([]);
 
-  const fetchData = async () => {
-    const res = await axios.get(
-      `http://localhost:5001/posts/${postId}/comments`
-    );
+const ListComments = ({comments}) => {
+  
 
-    setComments(res.data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+ 
   const renderedComments = comments.map((comment) => {
     return <li key={comment.id}>{comment.content}</li>;
   });
@@ -24,7 +13,7 @@ const ListComments = ({ postId }) => {
 };
 
 ListComments.propTypes = {
-  postId: PropTypes.number.isRequired,
+  comments: PropTypes.string.isRequired,
 };
 
 export default ListComments;

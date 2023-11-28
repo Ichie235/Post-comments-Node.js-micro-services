@@ -14,10 +14,12 @@ app.post("/events", (req, res) => {
   axios.post("http://localhost:5001/events", event).catch((err) => {
     console.log(err.message);
   });
-
+  axios.post("http://localhost:8000/events", event).catch((err) => {
+    console.log(err.message);
+  });
   res.send({ status: "OK" });
 });
 
-app.listen(4005, () => {
-  console.log("Listening on 4005");
+app.listen(5005, () => {
+  console.log("Listening on 5005");
 });
